@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Partner Suggestion System</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.20.0/cytoscape.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="mt-5">Dynamic Partner Suggestion System</h1>
+    
+    <!-- Company Selection -->
+    <div class="form-group mt-4">
+        <label for="companySelect">Select Affected Company:</label>
+        <select class="form-control" id="companySelect">
+            <!-- Companies will be dynamically loaded here -->
+        </select>
+    </div>
+
+    <!-- Factor Selection and Thresholds -->
+    <h5>Select Factors and Set Thresholds:</h5>
+    <div id="factorOptions">
+        <!-- Dynamic factor options will be generated here -->
+    </div>
+
+    <!-- Trigger Query Button -->
+    <button id="getRecommendations" class="btn btn-primary mt-3">Get Recommendations</button>
+
+    <!-- Results and Graph -->
+    <h3 class="mt-5">Recommendations</h3>
+    <div id="recommendation-list"></div>
+
+    <h3 class="mt-5">Visualization</h3>
+    <div id="cy"></div> <!-- Cytoscape.js container -->
+</div>
+
+<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
