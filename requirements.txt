@@ -1,5 +1,5 @@
 Flask
 pandas
 rdflib
-d3.js
-bootstrap
+owlrl
+

@@ -1,43 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Partner Suggestion System</title>
+    <title>Dynamic Partner Suggestion Dashboard</title>
+    <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!-- AdminLTE CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
+    <!-- jQuery (must be loaded before AdminLTE) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.20.0/cytoscape.min.js"></script>
 </head>
-<body>
 
-<div class="container">
-    <h1 class="mt-5">Dynamic Partner Suggestion System</h1>
-    
-    <!-- Company Selection -->
-    <div class="form-group mt-4">
-        <label for="companySelect">Select Affected Company:</label>
-        <select class="form-control" id="companySelect">
-            <!-- Companies will be dynamically loaded here -->
-        </select>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <a class="navbar-brand" href="#">Dynamic Partner Suggestion</a>
+        </nav>
+
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="info">
+                        <a href="#" class="d-block">Company Recommendation Dashboard</a>
+                    </div>
+                </div>
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" role="menu" data-accordion="false">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-chart-line"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <section class="content">
+                <div class="container-fluid">
+                    <!-- Row with two columns -->
+                    <div class="row">
+                        <!-- Left Column (Input Controls) -->
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Select Company and Factors</h3>
+                                </div>
+                                <!-- Form to select company and factors -->
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="companySelect">Select Affected Company:</label>
+                                        <select class="form-control" id="companySelect">
+                                            <!-- Companies will be dynamically loaded here -->
+                                        </select>
+                                    </div>
+
+                                    <!-- Factor Selection and Thresholds -->
+                                    <h5>Select Factors and Set Thresholds:</h5>
+                                    <div id="factorOptions">
+                                        <!-- Dynamic factor options will be generated here -->
+                                    </div>
+
+                                    <button id="getRecommendations" class="btn btn-primary mt-3">Get Recommendations</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column (Graph and Recommendations) -->
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Recommendations and Graph</h3>
+                                </div>
+                                <div class="card-body">
+                                    <!-- Recommendations -->
+                                    <h5 class="mb-3">Recommendations</h5>
+                                    <div id="recommendation-list" class="mb-4"></div>
+
+                                    <!-- Graph Visualization -->
+                                    <h5 class="mb-3">Company Similarity Graph</h5>
+                                    <div id="cy" style="width: 100%; height: 500px;"></div> <!-- Cytoscape.js container -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </div>
 
-    <!-- Factor Selection and Thresholds -->
-    <h5>Select Factors and Set Thresholds:</h5>
-    <div id="factorOptions">
-        <!-- Dynamic factor options will be generated here -->
-    </div>
-
-    <!-- Trigger Query Button -->
-    <button id="getRecommendations" class="btn btn-primary mt-3">Get Recommendations</button>
-
-    <!-- Results and Graph -->
-    <h3 class="mt-5">Recommendations</h3>
-    <div id="recommendation-list"></div>
-
-    <h3 class="mt-5">Visualization</h3>
-    <div id="cy"></div> <!-- Cytoscape.js container -->
-</div>
-
-<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <!-- AdminLTE JS (loaded after jQuery and Bootstrap) -->
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </body>
+
 </html>

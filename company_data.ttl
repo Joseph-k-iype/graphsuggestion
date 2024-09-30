@@ -1,0 +1,69 @@
+@prefix ex: <http://example.org/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/company/1> a ex:Company ;
+    ex:hasCompanyName "Apple"^^xsd:string ;
+    ex:hasMarketCap "2500000"^^xsd:float ;
+    ex:hasRevenue "274500"^^xsd:float ;
+    ex:produces <http://example.org/product/1> .
+
+<http://example.org/company/1.0> ex:hasESG <http://example.org/esg/1.0> ;
+    ex:hasGovernance <http://example.org/governance/1.0> ;
+    ex:hasStock <http://example.org/stock/1.0> .
+
+<http://example.org/company/2> a ex:Company ;
+    ex:hasCompanyName "Samsung"^^xsd:string ;
+    ex:hasMarketCap "350000"^^xsd:float ;
+    ex:hasRevenue "200000"^^xsd:float ;
+    ex:produces <http://example.org/product/2> .
+
+<http://example.org/company/2.0> ex:hasESG <http://example.org/esg/2.0> ;
+    ex:hasGovernance <http://example.org/governance/2.0> ;
+    ex:hasStock <http://example.org/stock/2.0> .
+
+<http://example.org/company/3> a ex:Company ;
+    ex:hasCompanyName "Microsoft"^^xsd:string ;
+    ex:hasMarketCap "1800000"^^xsd:float ;
+    ex:hasRevenue "168000"^^xsd:float ;
+    ex:produces <http://example.org/product/3> .
+
+<http://example.org/company/3.0> ex:hasESG <http://example.org/esg/3.0> ;
+    ex:hasGovernance <http://example.org/governance/3.0> ;
+    ex:hasStock <http://example.org/stock/3.0> .
+
+<http://example.org/esg/1.0> a ex:ESG ;
+    ex:hasESGScore "85.5"^^xsd:float .
+
+<http://example.org/esg/2.0> a ex:ESG ;
+    ex:hasESGScore "77.0"^^xsd:float .
+
+<http://example.org/esg/3.0> a ex:ESG ;
+    ex:hasESGScore "92.1"^^xsd:float .
+
+<http://example.org/governance/1.0> a ex:Governance ;
+    ex:hasGovernanceScore "4.5"^^xsd:float .
+
+<http://example.org/governance/2.0> a ex:Governance ;
+    ex:hasGovernanceScore "4.0"^^xsd:float .
+
+<http://example.org/governance/3.0> a ex:Governance ;
+    ex:hasGovernanceScore "4.8"^^xsd:float .
+
+<http://example.org/product/1> a ex:Product ;
+    ex:producesProduct "Smartphone"^^xsd:string .
+
+<http://example.org/product/2> a ex:Product ;
+    ex:producesProduct "TV"^^xsd:string .
+
+<http://example.org/product/3> a ex:Product ;
+    ex:producesProduct "Software"^^xsd:string .
+
+<http://example.org/stock/1.0> a ex:Stock ;
+    ex:hasStockPrice "145.2"^^xsd:float .
+
+<http://example.org/stock/2.0> a ex:Stock ;
+    ex:hasStockPrice "68.9"^^xsd:float .
+
+<http://example.org/stock/3.0> a ex:Stock ;
+    ex:hasStockPrice "289.7"^^xsd:float .
+

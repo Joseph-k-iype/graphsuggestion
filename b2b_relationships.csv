@@ -1,0 +1,21 @@
+RelationshipID,CompanyID,PartnerCompanyID,RelationshipType,Product,CollaborationDetails
+1,1,2,Partnership,Smartphones,Samsung partners with Apple for component supply
+2,2,3,Competition,Software,Apple competes with Microsoft in cloud services
+3,3,6,Competition,Social Media,Google competes with Facebook for ad revenue
+4,4,2,Partnership,E-Commerce,Amazon partners with Apple for device sales
+5,5,4,Partnership,Software,Microsoft and Google collaborate in AI
+6,6,8,Partnership,Processors,Intel and Tesla collaborate on processors for cars
+7,7,10,Competition,Cloud Services,IBM competes with Nvidia in cloud computing
+8,8,14,Partnership,Graphics Chips,Nvidia partners with Qualcomm on chip design
+9,9,5,Partnership,E-Commerce,Alibaba partners with Amazon on logistics
+10,10,15,Competition,Enterprise Software,Oracle competes with Adobe in enterprise solutions
+11,11,6,Competition,Social Media,Twitter competes with Facebook for user engagement
+12,12,19,Partnership,Vacation Rentals,Uber partners with Airbnb for user services
+13,13,12,Partnership,Creative Software,Adobe partners with Alibaba for cloud storage
+14,14,17,Partnership,CRM Software,Salesforce partners with Spotify on user data analysis
+15,15,17,Competition,Music Streaming,Uber competes with Spotify for streaming partnerships
+16,16,13,Partnership,Streaming,Netflix partners with Twitter for streaming promotions
+17,17,9,Competition,Electric Cars,Tesla competes with IBM for AI in vehicles
+18,18,7,Partnership,Social Media,Facebook partners with Intel on data storage
+19,19,7,Partnership,E-Commerce,Amazon partners with Intel for AI logistics
+20,20,20,Partnership,Streaming,Airbnb and Netflix collaborate on user engagement

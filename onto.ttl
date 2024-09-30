@@ -1,0 +1,58 @@
+@prefix ex: <http://example.org/ns#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Classes
+ex:Company rdf:type owl:Class .
+ex:ESG rdf:type owl:Class .
+ex:Governance rdf:type owl:Class .
+ex:Product rdf:type owl:Class .
+ex:Stock rdf:type owl:Class .
+
+# Data Properties
+ex:hasStockPrice rdf:type owl:DatatypeProperty ;
+    rdfs:domain ex:Stock ;
+    rdfs:range xsd:float .
+
+ex:hasESGScore rdf:type owl:DatatypeProperty ;
+    rdfs:domain ex:ESG ;
+    rdfs:range xsd:float .
+
+ex:hasGovernanceScore rdf:type owl:DatatypeProperty ;
+    rdfs:domain ex:Governance ;
+    rdfs:range xsd:float .
+
+ex:producesProduct rdf:type owl:DatatypeProperty ;
+    rdfs:domain ex:Company ;
+    rdfs:range xsd:string .
+
+ex:hasMarketCap rdf:type owl:DatatypeProperty ;
+    rdfs:domain ex:Company ;
+    rdfs:range xsd:float .
+
+ex:hasRevenue rdf:type owl:DatatypeProperty ;
+    rdfs:domain ex:Company ;
+    rdfs:range xsd:float .
+
+# Object Properties
+ex:hasESG rdf:type owl:ObjectProperty ;
+    rdfs:domain ex:Company ;
+    rdfs:range ex:ESG .
+
+ex:hasGovernance rdf:type owl:ObjectProperty ;
+    rdfs:domain ex:Company ;
+    rdfs:range ex:Governance .
+
+ex:hasStock rdf:type owl:ObjectProperty ;
+    rdfs:domain ex:Company ;
+    rdfs:range ex:Stock .
+
+ex:produces rdf:type owl:ObjectProperty ;
+    rdfs:domain ex:Company ;
+    rdfs:range ex:Product .
+
+ex:relatedTo rdf:type owl:ObjectProperty ;
+    rdfs:domain ex:Company ;
+    rdfs:range ex:Company .

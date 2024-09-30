@@ -122,7 +122,7 @@ function loadCytoscape(data) {
                     'label': 'data(label)',
                     'text-valign': 'bottom',
                     'text-halign': 'center',
-                    'color': '#fff',
+                    'color': '#000',
                     'font-size': '12px'
                 }
             },
@@ -133,7 +133,7 @@ function loadCytoscape(data) {
                     'line-color': '#aaa',
                     'target-arrow-color': '#aaa',
                     'target-arrow-shape': 'triangle',
-                    'label': 'data(label)',
+                    'label': 'data(label)',  // This shows the distance as an edge label
                     'font-size': '10px',
                     'color': '#333'
                 }
@@ -160,8 +160,9 @@ function displayRecommendations(recommendations) {
                     <strong>Company:</strong> ${item.company} <br>
                     <strong>Stock Price:</strong> ${item['Stock Price']} <br>
                     <strong>ESG Score:</strong> ${item['ESG Score']} <br>
-                    <strong>Governance Rating:</strong> ${item['Governance Rating']} <br>
+                    <strong>Governance Score:</strong> ${item['Governance Score']} <br>
                     <strong>Risk Level:</strong> ${item['Risk Level']} <br>
+                    <strong>Market Cap:</strong> ${item['Market Cap']} <br>
                     <strong>Total Score (Closeness):</strong> ${item['Total Score']}
                 </p>
             `;

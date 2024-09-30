@@ -1,0 +1,21 @@
+CompanyID,CompanyName,Sector,StockPrice2020,StockPrice2021,ESGScore,GovernanceRating,RiskLevel,MainProduct
+1,Samsung,Tech,850,900,80,A,Low,Smartphones
+2,Apple,Tech,1150,1200,85,A+,Medium,iPhones
+3,Microsoft,Tech,900,950,75,B+,High,Software
+4,Google,Tech,1700,1800,88,A+,Low,Search
+5,Amazon,E-Commerce,1900,2000,82,A,Medium,E-Commerce
+6,Facebook,Tech,1400,1500,78,B,High,Social Media
+7,Intel,Tech,1000,1050,79,A,Medium,Processors
+8,Tesla,Auto,600,650,86,A,Medium,Electric Cars
+9,IBM,Tech,700,800,72,B+,High,Cloud Services
+10,Nvidia,Tech,1200,1250,84,A,Low,Graphics Chips
+11,Oracle,Tech,600,700,73,B+,Medium,Enterprise Software
+12,Alibaba,E-Commerce,800,900,80,A,Medium,E-Commerce
+13,Twitter,Tech,300,400,70,B,High,Social Media
+14,Qualcomm,Tech,900,950,77,B+,Medium,Processors
+15,Adobe,Tech,950,1000,82,A,Medium,Creative Software
+16,Salesforce,Tech,1400,1450,89,A+,Low,CRM Software
+17,Spotify,Tech,300,350,78,A-,High,Music Streaming
+18,Uber,Transport,450,500,74,B+,Medium,Transportation
+19,Airbnb,Tech,700,800,82,A,Low,Vacation Rentals
+20,Netflix,Entertainment,800,900,88,A+,Medium,Streaming
