@@ -28,21 +28,26 @@ def clean_data(value):
     return value
 
 # Function to calculate a weighted Euclidean distance with penalties for higher values
-def calculate_distance(affected_company_scores, comparison_company_scores):
+def calculate_distance(affected_company_scores, comparison_company_scores, thresholds):
     distance = 0
     for factor, affected_score in affected_company_scores.items():
         comparison_score = comparison_company_scores[factor]
+        threshold = thresholds.get(factor)
 
-        # Penalize higher values with a larger distance, prefer similar or slightly lower values
-        if comparison_score > affected_score:
-            distance += (comparison_score - affected_score) ** 2  # Penalty for higher values
+        # Apply penalty if the company exceeds the provided threshold
+        if threshold is not None:
+            if comparison_score > threshold:
+                distance += (comparison_score - threshold) ** 2  # Strong penalty for exceeding the threshold
+            else:
+                distance += (threshold - comparison_score) ** 1.5  # Lesser penalty for being below the threshold
         else:
-            distance += (affected_score - comparison_score) ** 1.5  # Slightly lesser penalty for lower values
+            # Use normal comparison if no threshold is set
+            distance += (affected_score - comparison_score) ** 2
 
     return math.sqrt(distance)
 
 # Function to normalize the data and find companies closest to the affected company
-def get_closest_companies(company_data, affected_company, selected_factors):
+def get_closest_companies(company_data, affected_company, selected_factors, thresholds):
     affected_company_data = None
     normalized_data = []
 
@@ -72,11 +77,12 @@ def get_closest_companies(company_data, affected_company, selected_factors):
                 'original_data': row  # Save original data for selected factors
             })
 
-    # Calculate distances for each company compared to the affected company
+    # Calculate distances for each company compared to the affected company or thresholds
     for company in normalized_data:
         company['distance'] = calculate_distance(
             {factor: affected_company_data[factor] for factor in selected_factors},
-            {factor: company['normalized_scores'][factor] for factor in selected_factors}
+            {factor: company['normalized_scores'][factor] for factor in selected_factors},
+            thresholds
         )
 
     # Sort companies by their distance to the affected company (closest first)
@@ -96,7 +102,7 @@ def populate_graph():
         g.add((company_uri, RDF.type, EX.Company))
         g.add((company_uri, EX.hasStockPrice, Literal(row['StockPrice2021'])))
         g.add((company_uri, EX.hasESGScore, Literal(row['ESGScore_x'])))  # ESGScore from merged data
-        g.add((company_uri, EX.hasGovernanceRating, Literal(row['GovernanceRating'])))
+        g.add((company_uri, EX.hasGovernanceRating, Literal(row['GovernanceScore'])))
         g.add((company_uri, EX.hasRiskLevel, Literal(row['RiskLevel'])))
         g.add((company_uri, EX.isInSector, Literal(row['Sector'])))
         g.add((company_uri, EX.hasMarketCap, Literal(row['MarketCap (T)'])))
@@ -133,14 +139,19 @@ def suggest_partners_dynamic():
     data = request.json
     affected_company = data['company']
     factors = data['factors']
+    thresholds = data['thresholds']  # The custom thresholds provided by the user
+
+    # Set default factors if none are selected
+    if not factors:
+        factors = ['stockPrice', 'ESGScore', 'GovernanceScore', 'RiskLevel', 'MarketCap']
 
     # Combine all relevant data into one dataframe
     companies = company_metadata.merge(esg_data, on="CompanyID", how="left") \
                                 .merge(governance_data, on="CompanyID", how="left") \
                                 .merge(market_data, on="CompanyID", how="left")
 
-    # Get the closest companies based on selected factors
-    closest_companies = get_closest_companies(companies.to_dict('records'), affected_company, factors)
+    # Get the closest companies based on selected factors and thresholds
+    closest_companies = get_closest_companies(companies.to_dict('records'), affected_company, factors, thresholds)
 
     # Create nodes and edges for Cytoscape visualization
     nodes = [{'data': {'id': affected_company, 'label': affected_company}}]  # Add affected company node
